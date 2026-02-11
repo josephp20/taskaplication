@@ -1,6 +1,21 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function TaskForm(){
+
+    //writing a promise catching the data from our server
+const[tasks,setTask]=useState([]);
+
+//writing a promise catching the data from our server
+useEffect(() => {
+    fetch('http://localhost:8000/task')
+        .then((res) => res.json())   // ← aquí estaba el error
+        .then((data) => 
+            setTask(data)).catch((err)=>
+                console.log(err.message))
+    },[])
+
+    
     return(
 
 <div class="container-xl">
@@ -31,22 +46,25 @@ export default function TaskForm(){
                     </tr>
                 </thead>
                 <tbody>
+                    {
+                      tasks &&  tasks.map((item)=>(
                     <tr>
-                        <td>1</td>
-                        <td>Frontend Sprint</td>
-                        <td>Finish the layout of the website</td>
-                        <td>Pending</td>
-                        <td>Engineering</td>
-                        <td>01/20/2026</td>
-                        <td>02/20/2026</td>
-                        <td>medium</td>
+                        <td>{item.id}</td>
+                        <td>{item.title}</td>
+                        <td>{item.description}</td>
+                        <td>{item.status}</td>
+                        <td>{item.team}</td>
+                        <td>{item.creation}</td>
+                        <td>{item.creation_due}</td>
+                        <td>{item.priority}</td>
                         <td>
                             <a href="task/view/1" className="btn btn-info btn-sm">View</a>
                             <a href="task/edit/1" className="btn btn-warning btn-sm">Edit</a>
                             <a href="/" className="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
-       
+                         ))
+                    }
                 </tbody>
             </table>
             

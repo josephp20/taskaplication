@@ -1,6 +1,21 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function TeamForm(){
+
+    //writing a promise catching the data from our server
+const[teams,setTeam]=useState([]);
+
+//writing a promise catching the data from our server
+useEffect(() => {
+    fetch('http://localhost:8000/team')
+        .then((res) => res.json())   // ← aquí estaba el error
+        .then((data) => 
+            setTeam(data)).catch((err)=>
+                console.log(err.message))
+    },[])
+
+
     return(  
         <div class="container-xl">
     <div class="table-responsive">
@@ -26,18 +41,21 @@ export default function TeamForm(){
                     </tr>
                 </thead>
                 <tbody>
+                    {
+                      teams &&  teams.map((item)=>(
                     <tr>
-                        <td>1</td>
-                        <td>Development</td>
-                        <td>Software Engineer Team</td>
-                        <td>jose@manzano.com</td>
+                        <td>{item.id}</td>
+                        <td>{item.name}</td>
+                        <td>{item.description}</td>
+                        <td>{item.email}</td>
                         <td>
                             <a href="/team/view/1" className="btn btn-info btn-sm">View</a>
                             <a href="/team/edit/1" className="btn btn-warning btn-sm">Edit</a>
                             <a href="/team" className="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
-       
+                        ))
+                    }
                 </tbody>
             </table>
             

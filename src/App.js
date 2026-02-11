@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-import TaskForm from './taskForm';
-import CreateTask from './CreateTask';
-import EditTask from './EditTask';
-import ViewTask from './ViewTask';
+import TaskForm from './task/taskForm';
+import CreateTask from './task/CreateTask';
+import EditTask from './task/EditTask';
+import ViewTask from './task/ViewTask';
 
 
 import UserForm from './user/UsernameForm';
@@ -36,29 +36,29 @@ function App() {
   return (
     <>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5 py-4">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary mb-5 py-4">
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="/">Task Manager</a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+  <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a className="navbar-brand" href="/">Task Manager</a>
+    <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
       
-      <li class="nav-item active">
-        <a class="navbar-brand" href="/user">Users</a>
+      <li className="nav-item active">
+        <a className="navbar-brand" href="/user">Users</a>
       </li>
-      <li class="nav-item active">
-        <a class="navbar-brand" href="/role">Role</a>
+      <li className="nav-item active">
+        <a className="navbar-brand" href="/role">Role</a>
       </li>
-      <li class="nav-item active">
-        <a class="navbar-brand" href="/team">Team</a>
+      <li className="nav-item active">
+        <a className="navbar-brand" href="/team">Team</a>
       </li>
-      <li class="nav-item active">
-        <a class="navbar-brand" href="/signup">Signup</a>
+      <li className="nav-item active">
+        <a className="navbar-brand" href="/signup">Signup</a>
       </li>
      
-      <li class="nav-item active">
-        <a class="navbar-brand" href="/signup">Login</a>
+      <li className="nav-item active">
+        <a className="navbar-brand" href="/signup">Login</a>
       </li>
       
      
