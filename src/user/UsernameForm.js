@@ -153,7 +153,7 @@ export default function UserForm(){
                 </div>
                 
                 <div data-mdb-input-init class="form-outline mb-4">
-                  <input type="text" value={password} onChange={(e)=> setNewPassword(e.target.value)} placeholder="Password" class="form-control form-control-lg border-secondary"  />
+                  <input type="password" value={password} onChange={(e)=> setNewPassword(e.target.value)} placeholder="Password" class="form-control form-control-lg border-secondary"  />
                 </div>
 
                                 <label class="form-label" for="form3Example9">Role</label>
@@ -224,7 +224,7 @@ export default function UserForm(){
                         <th>Date<i class="fa fa-sort"></i></th>
                         <th></th>
                         <th></th>
-                        <th></th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -240,13 +240,14 @@ export default function UserForm(){
                             <td>
                                  <span
                                     className={`badge ${
-                                    addUser.role === "admin" ? "bg-success" : "bg-secondary"
+                                        addUser.role === "admin" ? "bg-success" : "bg-secondary"
                                     }`}
                                 >
                                     {addUser.role ?? "User"}
                                 </span>
                             </td>
 
+                            <td key={addUser.date}> {addUser.date}</td>
 
                                 <td>
                                     <button 

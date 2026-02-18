@@ -1,5 +1,6 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // needed for collapse
 
 import TaskForm from './task/taskForm';
 import CreateTask from './task/CreateTask';
@@ -34,75 +35,79 @@ import './App.css';
 
 function App() {
   return (
-    <>
-
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary mb-5 py-4">
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-  <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a className="navbar-brand" href="/">Task Manager</a>
-    <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-      
-      <li className="nav-item active">
-        <a className="navbar-brand" href="/user">Users</a>
-      </li>
-      <li className="nav-item active">
-        <a className="navbar-brand" href="/role">Role</a>
-      </li>
-      <li className="nav-item active">
-        <a className="navbar-brand" href="/team">Team</a>
-      </li>
-      <li className="nav-item active">
-        <a className="navbar-brand" href="/signup">Signup</a>
-      </li>
-     
-      <li className="nav-item active">
-        <a className="navbar-brand" href="/signup">Login</a>
-      </li>
-      
-     
-    </ul>
-    
-  </div>
-</nav>
-
-
     <BrowserRouter>
-      <Routes>
+      {/* Navbar */}
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary mb-5 py-4">
+        <div className="container-fluid">
+          <Link className="navbar-brand" to="/">Task Manager</Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
 
-          {/* Tasks */}
-          <Route path="/" element={<TaskForm/>}> </Route>
-          <Route path="/task/create" element={<CreateTask/>}> </Route>
-          <Route path="/task/edit/:taskid" element={<EditTask/>}> </Route>
-          <Route path="/task/view/:taskid" element={<ViewTask/>}> </Route>
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link className="nav-link" to="/user">Users</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/role">Roles</Link>
+              </li>
+              {/* Team pending 
+              <li className="nav-item">
+                <Link className="nav-link" to="/team">Team</Link>
+              </li>
+              */}
 
-          {/* User */}
-          <Route path="/user" element={<UserForm/>}> </Route>
-          <Route path="/user/create" element={<UserCreate/>}> </Route>
-          <Route path="/user/view/1" element={<ViewUser/>}> </Route>
-          <Route path="/user/edit/1" element={<EditUser/>}> </Route>
-          <Route path="/signup" element={<SignUser/>}> </Route>
-          <Route path="/login" element={<LoginUser/>}> </Route>
-          
-          {/* Team */}
-          <Route path="/team" element={<TeamForm/>}> </Route>
-          <Route path="/team/create" element={<CreateTeam/>}> </Route>
-          <Route path="/team/view/1" element={<ViewTeam/>}> </Route>
-          <Route path="/team/edit/1" element={<EditTeam/>}> </Route>
-         
-         
-          {/* Role */}
-          <Route path="/role" element={<RoleForm/>}> </Route>
-          <Route path="/role/create" element={<CreateRole/>}> </Route>
-          <Route path="/role/view/1" element={<ViewRole/>}> </Route>
-          <Route path="/role/edit/1" element={<EditRole/>}> </Route>
-          
+              <li className="nav-item">
+                <Link className="nav-link" to="/signup">Signup</Link>
+              </li>
 
-      </Routes>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">Login</Link>
+              </li>
+
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      {/* Routes */}
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<TaskForm />} />
+          <Route path="/task/create" element={<CreateTask />} />
+          <Route path="/task/edit/:taskid" element={<EditTask />} />
+          <Route path="/task/view/:taskid" element={<ViewTask />} />
+
+          <Route path="/user" element={<UserForm />} />
+          <Route path="/user/create" element={<UserCreate />} />
+          <Route path="/user/view/1" element={<ViewUser />} />
+          <Route path="/user/edit/1" element={<EditUser />} />
+          <Route path="/signup" element={<SignUser />} />
+          <Route path="/login" element={<LoginUser />} />
+
+          <Route path="/team" element={<TeamForm />} />
+          <Route path="/team/create" element={<CreateTeam />} />
+          <Route path="/team/view/1" element={<ViewTeam />} />
+          <Route path="/team/edit/1" element={<EditTeam />} />
+
+          <Route path="/role" element={<RoleForm />} />
+          <Route path="/role/create" element={<CreateRole />} />
+          <Route path="/role/view/1" element={<ViewRole />} />
+          <Route path="/role/edit/1" element={<EditRole />} />
+        </Routes>
+      </div>
     </BrowserRouter>
-    
-    </>);
+  );
 }
 
 export default App;
