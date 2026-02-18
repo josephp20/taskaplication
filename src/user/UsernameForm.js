@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { supabase } from '../supabaseClient'; // Ajusta la ruta según tu carpeta
 
 
@@ -10,7 +9,6 @@ export default function UserForm(){
     const [password, setNewPassword]= useState('');
     const [role, setRole] = useState("user");
     //list all users
-    const [newUser, setNewUser]= useState('');
     const [users, setUsersAll]= useState([]);
 
     //update

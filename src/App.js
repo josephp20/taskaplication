@@ -1,4 +1,3 @@
-import { supabase } from './supabaseClient'; // Ajusta la ruta según tu carpeta
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
